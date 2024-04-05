@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+
+    <title>show</title>
+
+{% endblock %}
+{% block content %}
+            <table class="table table-dark table-hover">
+                    <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Shop Name</th>
+                                <th>Address</th>
+                                <th>Owner</th>
+                                <th>Operated Since</th>
+                                <th>Available Services</th>
+                                <th>Payment Mode</th>
+                                <th colspan="2" class="text-center">Action</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        {% for shop in shops %}
+                            <tr>
+                                <td>{{ shop.shop_id }}</td>
+                                <td>{{ shop.shop_name }}</td>
+                                <td>{{ shop.shop_address }}</td>
+                                <td>{{ shop.shop_owner }}</td>
+                                <td>{{ shop.operated_since }}</td>
+                                <td>{{ shop.available_services }}</td>
+                                <td>{{ shop.payment_mode }}</td>
+                                <td>
+                                    <a href="{% url 'update_url' shop.id %}">
+                                        <button class="btn btn-primary"><i class="bi bi-pencil-square"></i>&nbsp Update</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_url' shop.id  %}">
+                                        <button class="btn btn-warning"><i class="bi bi-trash"></i>&nbsp Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+
+{% endblock %}
